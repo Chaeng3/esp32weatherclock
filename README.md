@@ -12,6 +12,14 @@ ProvincesCities.h为根据心知天气API说明可返回天气的370个中国地
 墨水屏（微雪，2.13寸）：https://item.taobao.com/item.htm?spm=a1z09.2.0.0.7e542e8dHTZ26k&id=641176940647&_u=emog2ld771&skuId=5118694626559
 电池（802260，1200ma）：https://item.taobao.com/item.htm?spm=a1z09.2.0.0.7e542e8dHTZ26k&id=678474541123&_u=emog2l6e4f&skuId=4871705645044
 ===============================================================================
+使用说明：
+1.打开开关（屏幕下方可左右滑动的按钮，向右拨动打开）。
+2.使用手机WIFI，连接“ESP32-Config”。![Screenshot_20240728_225910_Settings](https://github.com/user-attachments/assets/042e5e62-9e52-4ce0-94ec-d7fde61d54dc)
+
+
+3.手机浏览器访问“192.168.4.1”并配置。![Screenshot_20240728_230031_Samsung Internet](https://github.com/user-attachments/assets/2b4ee548-478c-4bc4-893e-e9910da75764)
+
+
 下面是设备的更新日志：
 3.1 （一代插电版）放弃Arduino（因编译效率太低），改回MicroPython，编译效率提高。
 3.2（一代插电版） 转换环境成功（从Arduino到MicroPython）。
