@@ -1,10 +1,12 @@
-
 ![20240622_181808](https://github.com/user-attachments/assets/f0598f11-9933-4b74-8f8a-5ed993c8f30e)
 ![20240728_192331](https://github.com/user-attachments/assets/c153d8c1-0713-4711-a501-be263fa81fd4)
 ![20240623_222231](https://github.com/user-attachments/assets/bec10421-6a8c-442e-95ba-16c3312a99a9)
 
-此版本为最稳定版本6.54版本，其中tianqi6.54为源代码，images.h和weather_icons.h还有为图标的数组文件，ProvincesCities.h为省市列表文件，不需要更改。
-注意：要想使用天气API，代码中的const char* weatherApiKey = "XXX";请使用自己申请的密钥。
+此版本为最稳定版本6.54版本，其中tianqi6.54为源代码。
+images.h为代码调用的MyLogo等按钮数组文件。
+weather_icons.h为天气图标数组文件。
+ProvincesCities.h为省市列表文件，根据心知天气AIP说明370中国地级以上城市列表文件。
+设备资料路径：www.waveshare.net/wiki/2.13inch_e-Paper_Cloud_Module
 ===============================================================================
 下面是主要设备的淘宝链接：
 墨水屏（微雪，2.13寸）：https://item.taobao.com/item.htm?spm=a1z09.2.0.0.7e542e8dHTZ26k&id=641176940647&_u=emog2ld771&skuId=5118694626559
