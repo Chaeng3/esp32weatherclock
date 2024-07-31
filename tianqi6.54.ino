@@ -35,7 +35,7 @@ const char* paramFile = "/params.txt";
 const char* rebootCounterFile = "/rebootCounter.txt"; // 文件名记录重启计数
 const char* timeServer = "http://worldtimeapi.org/api/timezone/Asia/Shanghai";
 const char* weatherServer = "https://api.seniverse.com/v3/weather/daily.json";
-const char* weatherApiKey = "XXX";//请前往“心知天气”免费申请密钥
+const char* weatherApiKey = "SgyRY5-JZCEC3LZc_";
 
 PAINT_TIME sPaint_time;
 UBYTE *BlackImage = NULL;
@@ -109,7 +109,6 @@ std::mutex epdMutex;
 WebServer server(80);
 
 unsigned long apStartTime = 0;
-bool apActive = false;
 volatile bool buttonWIFIed = false; // 用于跟踪按钮是否被按下
 volatile unsigned long lastButtonPressTime = 0; // 用于记录上一次按键按下的时间
 volatile int buttonPressCount = 0; // 用于记录按键按下的次数
@@ -349,7 +348,6 @@ void startConfigPortal() {
     SerialPrintln("Starting configuration portal...");
     WiFi.softAP("ESP32_Config");
     apStartTime = millis();
-    apActive = true;
     IPAddress myIP = WiFi.softAPIP();
     SerialPrint("AP IP address: ");
     SerialPrintln(myIP);
@@ -632,6 +630,9 @@ void setup() {
 
     // 初始化ADC
     init_adc();
+    
+    // 显示WiFi图标
+    showWIFIIcon(218, 106);
 }
 
 void IRAM_ATTR handleButtonWIFI() {
@@ -958,10 +959,8 @@ void updateDisplay(PAINT_TIME* sPaint_time, bool fullRefresh) {
     SerialPrintln(sPaint_time->Min);
 
     // 如果AP不活动，则进入轻度休眠59秒
-    if (!apActive) {
-        esp_sleep_enable_timer_wakeup(59 * 1000000);
-        esp_light_sleep_start();
-    }
+    esp_sleep_enable_timer_wakeup(59 * 1000000);
+    esp_light_sleep_start();
 }
 
 void drawBoldChar(int x, int y, char ch, sFONT* font, int color, int bgcolor) {
@@ -1142,6 +1141,7 @@ void loop() {
     static unsigned long previousMillis = 0;
     static unsigned long batteryPreviousMillis = 0;
     static int batteryCheckCount = 0;
+    static bool wifiIconHidden = false;
 
     unsigned long currentMillis = millis();
 
@@ -1230,11 +1230,13 @@ void loop() {
         }
     }
 
-    if (apActive && (currentMillis - apStartTime >= 300000)) {
+    // 断开WiFi连接后隐藏图标
+    if (currentMillis - apStartTime >= 300000 && !wifiIconHidden) {
         WiFi.disconnect(true);
         WiFi.softAPdisconnect(true);
-        apActive = false;
-        SerialPrintln("AP closed to save power");
+        hideWIFIIcon(218, 106);
+        wifiIconHidden = true;
+        SerialPrintln("WiFi icon hidden after 5 minutes");
     }
 
     // 控制displayBatteryStatus的调用频率
@@ -1243,13 +1245,6 @@ void loop() {
         batteryPreviousMillis = currentMillis;
         displayBatteryStatus(234, 106); // 在指定坐标显示电池状态
         batteryCheckCount++;
-    }
-
-    // 判断AP状态，显示或隐藏WiFi图标
-    if (apActive) {
-        showWIFIIcon(218, 106); // 显示WiFi图标
-    } else {
-        hideWIFIIcon(218, 106); // 隐藏WiFi图标
     }
 
     // 检查按钮是否被按下
