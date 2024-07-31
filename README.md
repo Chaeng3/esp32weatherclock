@@ -24,7 +24,7 @@ ProvincesCities.h为根据心知天气API说明可返回天气的370个中国地
 3. 手机浏览器访问“192.168.4.1”并配置。![Screenshot_20240728_230031_Samsung Internet](https://github.com/user-attachments/assets/2b4ee548-478c-4bc4-893e-e9910da75764)
 
 下面是设备的更新日志：
-
+ 6.5.5（三代微雪屏版）移除所有与 apActive 相关的逻辑。仅在 setup 函数中显示WiFi图标，并在WiFi断开后隐藏图标。
 * 6.5.4（三代微雪屏版）将 WIFIIconShown 相关的逻辑替换为对 apActive 状态的检查。如果 apActive 为 true，则显示 WiFi 图标；如果 apActive 为 false，则隐藏 WiFi 图标。
 * 6.5.3（三代微雪屏版）只在syncHours时间点检查是否需要同步。在0点时，只进行时间同步，不更新天气信息。如果时间同步失败，则重启设备。
 * 6.5.2（三代微雪屏版）增加串口发送命令set_2359来强制将时间设置为23:59，日期为2024.07.27和星期为FRI的代码，以便测试午夜的过渡。
