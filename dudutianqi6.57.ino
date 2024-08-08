@@ -35,7 +35,7 @@ const char* paramFile = "/params.txt";
 const char* rebootCounterFile = "/rebootCounter.txt"; // 文件名记录重启计数
 const char* timeServer = "http://worldtimeapi.org/api/timezone/Asia/Shanghai";
 const char* weatherServer = "https://api.seniverse.com/v3/weather/daily.json";
-const char* weatherApiKey = "SgyRY5-JZCEC3LZc_";
+const char* weatherApiKey = "XXX";//心知天气API私钥
 const char* weatherDataFile = "/weatherData.txt"; // 保存天气数据的文件
 
 PAINT_TIME sPaint_time;
