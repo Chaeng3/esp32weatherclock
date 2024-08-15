@@ -2,7 +2,7 @@
 ![20240728_192331](https://github.com/user-attachments/assets/c153d8c1-0713-4711-a501-be263fa81fd4)
 ![20240623_222231](https://github.com/user-attachments/assets/bec10421-6a8c-442e-95ba-16c3312a99a9)
 
-此版本为最稳定版本6.55版本，其中tianqi6.55为源代码。
+此版本为最稳定版本6.57版本，其中tianqi6.57为源代码。
 images.h为调用的MyLogo、按钮等图形数组文件。
 weather_icons.h为天气图标图形数组文件。
 ProvincesCities.h为根据心知天气API说明可返回天气的370个中国地级以上城市列表文件。
